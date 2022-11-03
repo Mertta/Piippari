@@ -6,6 +6,9 @@ export default function App() {
   const [hours, setHours] = React.useState("Hours");
   const [minutes, setMinutes] = React.useState("Minutes");
   const [seconds, setSeconds] = React.useState("Seconds");
+
+  const onButtonPress = () => toMilliseconds(hours, minutes, seconds)
+
   return (
     <View style={styles.container}>
       <TextInput
