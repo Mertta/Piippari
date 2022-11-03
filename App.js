@@ -8,7 +8,20 @@ export default function App() {
   const [seconds, setSeconds] = React.useState("Seconds");
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <TextInput
+        defaultValue="Hours"
+        onChangeText={(text) => setHours(text)}
+        value={hours}
+      />
+      <TextInput
+        defaultValue="Minutes"
+        onChangeText={(text) => setMinutes(text)}
+        value={minutes}
+      />
+      <TextInput
+        defaultValue="Minutes"
+        onChangeText={(text) => setSeconds(text)}
+        value={seconds}
       <StatusBar style="auto" />
     </View>
   );
