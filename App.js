@@ -36,11 +36,16 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
+  textInput: {
+    borderColor: "gray",
+    borderWidth: 1,
+    height: 40,
+  },
   container: {
+    alignItems: "center",
+    backgroundColor: "#fff",
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: "center",
   },
 });
 
