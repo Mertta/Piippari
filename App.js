@@ -7,7 +7,7 @@ export default function App() {
   const [minutes, setMinutes] = React.useState("Minutes");
   const [seconds, setSeconds] = React.useState("Seconds");
 
-  const onButtonPress = () => toMilliseconds(hours, minutes, seconds)
+  const onButtonPress = () => toMilliseconds(hours, minutes, seconds);
 
   return (
     <View style={styles.container}>
@@ -26,10 +26,7 @@ export default function App() {
         onChangeText={(text) => setSeconds(text)}
         value={seconds}
       />
-      <Button
-        title="Set Time"
-        onPress={onButtonPress}
-      />
+      <Button title="Set Time" onPress={onButtonPress} />
       <StatusBar style="auto" />
     </View>
   );
