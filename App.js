@@ -22,6 +22,11 @@ export default function App() {
         defaultValue="Minutes"
         onChangeText={(text) => setSeconds(text)}
         value={seconds}
+      />
+      <Button
+        title="Set Time"
+        onPress={onButtonPress}
+      />
       <StatusBar style="auto" />
     </View>
   );
