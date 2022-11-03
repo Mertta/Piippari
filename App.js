@@ -3,6 +3,9 @@ import { StatusBar } from "expo-status-bar";
 import { Button, StyleSheet, TextInput, View } from "react-native";
 
 export default function App() {
+  const [hours, setHours] = React.useState("Hours");
+  const [minutes, setMinutes] = React.useState("Minutes");
+  const [seconds, setSeconds] = React.useState("Seconds");
   return (
     <View style={styles.container}>
       <Text>Open up App.js to start working on your app!</Text>
