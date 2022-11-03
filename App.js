@@ -43,3 +43,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+// Converts user input to milliseconds
+function toMilliseconds(hours, minutes, seconds) {
+  return hours * 3600000 + minutes * 60000 + seconds * 1000;
+}
