@@ -52,8 +52,11 @@ export default function App() {
         onChangeText={(text) => setSeconds(text)}
         value={seconds}
       />
-      <Button title="Set Time" onPress={onButtonPress} />
-      <StatusBar style="auto" />
+      </View>
+      <View style={styles.button}>
+        <Button title="Start Timer" onPress={onButtonPressStart} />
+        <Button title="Stop Timer" onPress={onButtonPressStop} />
+      </View>
     </View>
   );
 }
