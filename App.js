@@ -17,6 +17,12 @@ export default function App() {
     console.log("Ajastin asetettu");
   };
 
+  // Stops the timer
+  const onButtonPressStop = function () {
+    console.log("Ajastin pysäytetty");
+    clearInterval(timer.current);
+  };
+
   return (
     <View style={styles.container}>
       <TextInput
