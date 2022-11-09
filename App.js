@@ -7,6 +7,8 @@ export default function App() {
   const [minutes, setMinutes] = React.useState("Minutes");
   const [seconds, setSeconds] = React.useState("Seconds");
 
+  const timer = React.useRef(); // Miksi tässä ei kannata käyttää let timeria (let timer;)?
+
   const onButtonPressStart = function () {
     console.log("Start-nappia painettu");
     // Calls toMilliseconds and saves the return value as delay
