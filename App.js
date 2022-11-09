@@ -23,6 +23,11 @@ export default function App() {
     clearInterval(timer.current);
   };
 
+  // Beeps
+  const signal = function () {
+    console.log("PIIP");
+  };
+
   return (
     <View style={styles.container}>
       <TextInput
