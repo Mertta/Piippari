@@ -33,16 +33,25 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  textInput: {
-    borderColor: "gray",
-    borderWidth: 1,
-    height: 40,
-  },
+  button: {},
   container: {
     alignItems: "center",
-    backgroundColor: "#fff",
+    backgroundColor: "pink",
     flex: 1,
+    flexDirection: "column",
     justifyContent: "center",
+  },
+  textInput: {
+    backgroundColor: "red",
+    borderColor: "gray",
+    borderWidth: 1,
+  },
+  timerInput: {
+    alignItems: "center",
+    backgroundColor: "blue",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    width: "50%",
   },
 });
 
