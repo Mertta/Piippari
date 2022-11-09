@@ -7,7 +7,15 @@ export default function App() {
   const [minutes, setMinutes] = React.useState("Minutes");
   const [seconds, setSeconds] = React.useState("Seconds");
 
-  const onButtonPress = () => toMilliseconds(hours, minutes, seconds);
+  const onButtonPressStart = function () {
+    console.log("Start-nappia painettu");
+    // Calls toMilliseconds and saves the return value as delay
+    const delay = toMilliseconds(hours, minutes, seconds);
+    console.log("Millisekuntifunktiota kutsuttu");
+    // Calls timer function
+    timer.current = setInterval(signal, delay);
+    console.log("Ajastin asetettu");
+  };
 
   return (
     <View style={styles.container}>
