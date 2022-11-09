@@ -9,6 +9,7 @@ export default function App() {
 
   const timer = React.useRef(); // Miksi tässä ei kannata käyttää let timeria (let timer;)?
 
+  // Starts the timer
   const onButtonPressStart = function () {
     console.log("Start-nappia painettu");
     // Calls toMilliseconds and saves the return value as delay
@@ -37,6 +38,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+      <View style={styles.timerInput}>
       <TextInput
         defaultValue="Hours"
         onChangeText={(text) => setHours(text)}
