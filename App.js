@@ -28,6 +28,11 @@ export default function App() {
     console.log("PIIP");
   };
 
+  // Converts user input to milliseconds
+  const toMilliseconds = function (hours, minutes, seconds) {
+    return hours * 3600000 + minutes * 60000 + seconds * 1000;
+  };
+
   return (
     <View style={styles.container}>
       <TextInput
