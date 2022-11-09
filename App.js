@@ -39,21 +39,21 @@ export default function App() {
   return (
     <View style={styles.container}>
       <View style={styles.timerInput}>
-      <TextInput
-        defaultValue="Hours"
-        onChangeText={(text) => setHours(text)}
-        value={hours}
-      />
-      <TextInput
-        defaultValue="Minutes"
-        onChangeText={(text) => setMinutes(text)}
-        value={minutes}
-      />
-      <TextInput
-        defaultValue="Minutes"
-        onChangeText={(text) => setSeconds(text)}
-        value={seconds}
-      />
+        <TextInput
+          defaultValue="Hours"
+          onChangeText={(text) => setHours(text)}
+          value={hours}
+        />
+        <TextInput
+          defaultValue="Minutes"
+          onChangeText={(text) => setMinutes(text)}
+          value={minutes}
+        />
+        <TextInput
+          defaultValue="Minutes"
+          onChangeText={(text) => setSeconds(text)}
+          value={seconds}
+        />
       </View>
       <View style={styles.button}>
         <Button title="Start Timer" onPress={onButtonPressStart} />
@@ -85,8 +85,3 @@ const styles = StyleSheet.create({
     width: "50%",
   },
 });
-
-// Converts user input to milliseconds
-function toMilliseconds(hours, minutes, seconds) {
-  return hours * 3600000 + minutes * 60000 + seconds * 1000;
-}
