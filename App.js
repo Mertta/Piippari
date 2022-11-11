@@ -8,8 +8,10 @@ export default function App() {
   const [minutes, setMinutes] = React.useState("Minutes");
   const [seconds, setSeconds] = React.useState("Seconds");
 
+  // Luodaan timer-muuttuja
   const timer = React.useRef(); // Miksi tässä ei kannata käyttää let timeria (let timer;)?
 
+  // Luodaan sound-muuttuja
   const sound = React.useRef();
   // Starts the timer
   const onButtonPressStart = function () {
@@ -29,8 +31,10 @@ export default function App() {
   };
 
   // Beeps
-  const signal = function () {
+  /* const signal = function () {
     console.log("PIIP");
+  };*/
+
   async function playSound() {
     console.log("Playing sound");
     await sound.playSound();
