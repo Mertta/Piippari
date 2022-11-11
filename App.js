@@ -10,6 +10,7 @@ export default function App() {
 
   const timer = React.useRef(); // Miksi tässä ei kannata käyttää let timeria (let timer;)?
 
+  const sound = React.useRef();
   // Starts the timer
   const onButtonPressStart = function () {
     console.log("Start-nappia painettu");
@@ -17,7 +18,7 @@ export default function App() {
     const delay = toMilliseconds(hours, minutes, seconds);
     console.log("Millisekuntifunktiota kutsuttu");
     // Calls timer function
-    timer.current = setInterval(signal, delay);
+    timer.current = setInterval(playSound, delay);
     console.log("Ajastin asetettu");
   };
 
@@ -30,7 +31,10 @@ export default function App() {
   // Beeps
   const signal = function () {
     console.log("PIIP");
-  };
+  async function playSound() {
+    console.log("Playing sound");
+    await sound.playSound();
+  }
 
   // Converts user input to milliseconds
   const toMilliseconds = function (hours, minutes, seconds) {
