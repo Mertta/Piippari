@@ -1,4 +1,4 @@
-import { audio } from "expo-av";
+import { Audio } from "expo-av";
 import React from "react";
 import { Button, StyleSheet, Text, TextInput, View } from "react-native";
 
@@ -6,12 +6,32 @@ export default function App() {
   const [hours, setHours] = React.useState("Hours");
   const [minutes, setMinutes] = React.useState("Minutes");
   const [seconds, setSeconds] = React.useState("Seconds");
-
   // Luodaan timer-muuttuja
   const timer = React.useRef(); // Miksi tässä ei kannata käyttää let timeria (let timer;)?
+  // Luodaan sound state
+  const [sound, setSound] = React.useState(); // Tämä on destrukturointia: useState() palauttaa listan, jonka ensimmäinen alkio on muuttuja (sound) ja toinen alkio on funktio joka muuttaa muuttujaa
 
-  // Luodaan sound-muuttuja
-  const sound = React.useRef();
+  // Luodaan playSound funktio
+  async function playSound() {
+    console.log("Loading Sound");
+    const { sound } = await Audio.Sound.createAsync(
+      require("./assets/beep.mp3")
+    );
+    setSound(sound);
+
+    console.log("Playing Sound");
+    await sound.playAsync();
+  }
+
+  React.useEffect(() => {
+    return sound
+      ? () => {
+          console.log("Unloading Sound");
+          sound.unloadAsync();
+        }
+      : undefined;
+  }, [sound]);
+
   // Starts the timer
   const onButtonPressStart = function () {
     console.log("Start-nappia painettu");
@@ -33,11 +53,6 @@ export default function App() {
   /* const signal = function () {
     console.log("PIIP");
   };*/
-
-  async function playSound() {
-    console.log("Playing sound");
-    await sound.playSound();
-  }
 
   // Converts user input to milliseconds
   const toMilliseconds = function (hours, minutes, seconds) {
@@ -66,6 +81,9 @@ export default function App() {
       <View style={styles.button}>
         <Button title="Start Timer" onPress={onButtonPressStart} />
         <Button title="Stop Timer" onPress={onButtonPressStop} />
+      </View>
+      <View style={styles.container}>
+        <Button title="Play Sound" onPress={playSound} />
       </View>
     </View>
   );
