@@ -1,7 +1,6 @@
 import { audio } from "expo-av";
 import React from "react";
-import { StatusBar } from "expo-status-bar";
-import { Button, StyleSheet, TextInput, View } from "react-native";
+import { Button, StyleSheet, Text, TextInput, View } from "react-native";
 
 export default function App() {
   const [hours, setHours] = React.useState("Hours");
