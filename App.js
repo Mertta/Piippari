@@ -3,9 +3,9 @@ import React from "react";
 import { Button, StyleSheet, Text, TextInput, View } from "react-native";
 
 export default function App() {
-  const [hours, setHours] = React.useState("Hours");
-  const [minutes, setMinutes] = React.useState("Minutes");
-  const [seconds, setSeconds] = React.useState("Seconds");
+  const [hours, setHours] = React.useState("0");
+  const [minutes, setMinutes] = React.useState("0");
+  const [seconds, setSeconds] = React.useState("5");
   // Luodaan timer-muuttuja
   const timer = React.useRef(); // Miksi tässä ei kannata käyttää let timeria (let timer;)?
   // Luodaan sound state
