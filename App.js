@@ -82,9 +82,6 @@ export default function App() {
         <Button title="Start Timer" onPress={onButtonPressStart} />
         <Button title="Stop Timer" onPress={onButtonPressStop} />
       </View>
-      <View style={styles.container}>
-        <Button title="Play Sound" onPress={playSound} />
-      </View>
     </View>
   );
 }
