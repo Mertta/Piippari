@@ -87,7 +87,21 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  button: {},
+  pressable: {
+    alignItems: "center",
+    backgroundColor: "green",
+    height: 50,
+    justifyContent: "center",
+    width: 150,
+  },
+  pressableGreen: {
+    backgroundColor: "green",
+    marginTop: 100,
+  },
+  pressableRed: {
+    backgroundColor: "red",
+    marginTop: 10,
+  },
   container: {
     alignItems: "center",
     backgroundColor: "pink",
