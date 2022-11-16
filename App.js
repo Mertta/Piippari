@@ -70,6 +70,7 @@ export default function App() {
           style={styles.textInput}
           value={hours}
         />
+        <TextInput style={styles.textInput} defaultValue=":" />
         <TextInput
           keyboardType="numeric"
           onChangeText={(text) => setMinutes(text)}
@@ -77,6 +78,7 @@ export default function App() {
           style={styles.textInput}
           value={minutes}
         />
+        <TextInput style={styles.textInput} defaultValue=":" />
         <TextInput
           keyboardType="numeric"
           onChangeText={(text) => setSeconds(text)}
