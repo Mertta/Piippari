@@ -10,15 +10,12 @@ import {
 } from "react-native";
 
 export default function App() {
-  const [hours, setHours] = React.useState("0");
-  const [minutes, setMinutes] = React.useState("0");
-  const [seconds, setSeconds] = React.useState("5");
-  // Luodaan timer-muuttuja
-  const timer = React.useRef(); // Miksi tässä ei kannata käyttää let timeria (let timer;)?
-  // Luodaan sound state
-  const [sound, setSound] = React.useState(); // Tämä on destrukturointia: useState() palauttaa listan, jonka ensimmäinen alkio on muuttuja (sound) ja toinen alkio on funktio joka muuttaa muuttujaa
+  const [hours, setHours] = React.useState("00");
+  const [minutes, setMinutes] = React.useState("00");
+  const [seconds, setSeconds] = React.useState("05");
+  const timer = React.useRef();
+  const [sound, setSound] = React.useState();
 
-  // Luodaan playSound funktio
   async function playSound() {
     console.log("Loading Sound");
     const { sound } = await Audio.Sound.createAsync(
@@ -39,29 +36,19 @@ export default function App() {
       : undefined;
   }, [sound]);
 
-  // Starts the timer
   const onButtonPressStart = function () {
     console.log("Start-nappia painettu");
-    // Calls toMilliseconds and saves the return value as delay
     const delay = toMilliseconds(hours, minutes, seconds);
     console.log("Millisekuntifunktiota kutsuttu");
-    // Calls timer function
     timer.current = setInterval(playSound, delay);
     console.log("Ajastin asetettu");
   };
 
-  // Stops the timer
   const onButtonPressStop = function () {
     console.log("Ajastin pysäytetty");
     clearInterval(timer.current);
   };
 
-  // Beeps
-  /* const signal = function () {
-    console.log("PIIP");
-  };*/
-
-  // Converts user input to milliseconds
   const toMilliseconds = function (hours, minutes, seconds) {
     return hours * 3600000 + minutes * 60000 + seconds * 1000;
   };
@@ -127,7 +114,7 @@ const styles = StyleSheet.create({
   },
   container: {
     alignItems: "center",
-    backgroundColor: "pink",
+    backgroundColor: "black",
     flex: 1,
     flexDirection: "column",
     justifyContent: "center",
@@ -145,9 +132,7 @@ const styles = StyleSheet.create({
   },
   timerInput: {
     alignItems: "center",
-    backgroundColor: "blue",
     flexDirection: "row",
     justifyContent: "space-between",
-    width: "50%",
   },
 });
