@@ -65,16 +65,22 @@ export default function App() {
         <TextInput
           keyboardType="numeric"
           onChangeText={(text) => setHours(text)}
+          onFocus={() => setHours("")}
+          style={styles.textInput}
           value={hours}
         />
         <TextInput
           keyboardType="numeric"
           onChangeText={(text) => setMinutes(text)}
+          onFocus={() => setMinutes("")}
+          style={styles.textInput}
           value={minutes}
         />
         <TextInput
           keyboardType="numeric"
           onChangeText={(text) => setSeconds(text)}
+          onFocus={() => setSeconds("")}
+          style={styles.textInput}
           value={seconds}
         />
       </View>
