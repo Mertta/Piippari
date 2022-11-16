@@ -84,10 +84,18 @@ export default function App() {
           value={seconds}
         />
       </View>
-      <View style={styles.button}>
-        <Button title="Start Timer" onPress={onButtonPressStart} />
-        <Button title="Stop Timer" onPress={onButtonPressStop} />
-      </View>
+      <Pressable
+        style={[styles.pressable, styles.pressableGreen]}
+        onPress={onButtonPressStart}
+      >
+        <Text style={styles.text}>Start</Text>
+      </Pressable>
+      <Pressable
+        style={[styles.pressable, styles.pressableRed]}
+        onPress={onButtonPressStop}
+      >
+        <Text style={styles.text}>Stop</Text>
+      </Pressable>
     </View>
   );
 }
