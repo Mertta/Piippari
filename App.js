@@ -109,6 +109,12 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
   },
+  text: {
+    color: "white",
+    fontFamily: "Futura",
+    fontSize: 28,
+    textTransform: "uppercase",
+  },
   textInput: {
     backgroundColor: "red",
     borderColor: "gray",
