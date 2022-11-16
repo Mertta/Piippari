@@ -116,9 +116,9 @@ const styles = StyleSheet.create({
     textTransform: "uppercase",
   },
   textInput: {
-    backgroundColor: "red",
-    borderColor: "gray",
-    borderWidth: 1,
+    color: "white",
+    fontSize: 44,
+    fontFamily: "Futura",
   },
   timerInput: {
     alignItems: "center",
