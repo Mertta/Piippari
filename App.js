@@ -63,17 +63,17 @@ export default function App() {
     <View style={styles.container}>
       <View style={styles.timerInput}>
         <TextInput
-          defaultValue="Hours"
+          keyboardType="numeric"
           onChangeText={(text) => setHours(text)}
           value={hours}
         />
         <TextInput
-          defaultValue="Minutes"
+          keyboardType="numeric"
           onChangeText={(text) => setMinutes(text)}
           value={minutes}
         />
         <TextInput
-          defaultValue="Minutes"
+          keyboardType="numeric"
           onChangeText={(text) => setSeconds(text)}
           value={seconds}
         />
