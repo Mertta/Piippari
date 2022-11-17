@@ -15,6 +15,8 @@ export default function App() {
   const [seconds, setSeconds] = React.useState("05");
   const timer = React.useRef();
   const [sound, setSound] = React.useState();
+  const minutesRef = React.useRef();
+  const secondsRef = React.useRef();
 
   async function playSound() {
     console.log("Loading Sound");
@@ -61,6 +63,16 @@ export default function App() {
       setMinutes(hoursInput[hoursInput.length - 1]);
     }
   };
+
+  const onChangeMinutes = function (minutesInput) {
+    if (Number(minutesInput) <= 59) {
+      setMinutes(minutesInput);
+    } else {
+      secondsRef.current.focus();
+      setSeconds(minutesInput[minutesInput.length - 1]);
+    }
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.timerInput}>
