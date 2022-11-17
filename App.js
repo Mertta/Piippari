@@ -24,30 +24,28 @@ export default function App() {
       require("./assets/beep.mp3")
     );
     setSound(sound);
-
-    console.log("Playing Sound");
     await sound.playAsync();
   }
 
   React.useEffect(() => {
     return sound
       ? () => {
-          console.log("Unloading Sound");
           sound.unloadAsync();
         }
       : undefined;
   }, [sound]);
 
   const onButtonPressStart = function () {
-    console.log("Start-nappia painettu");
+    console.log("Start");
     const delay = toMilliseconds(hours, minutes, seconds);
-    console.log("Millisekuntifunktiota kutsuttu");
     timer.current = setInterval(playSound, delay);
-    console.log("Ajastin asetettu");
+    // Aseta intervalli: 1 s välein kellon näkymä vähenee ja käyttäjän asettaman ajan välein playSound-funktiota kutsutaan.
+    // Näkymä muuttuu sekuntin välein
+    // Numeronäppäimistö katoaa näytöltä
   };
 
   const onButtonPressStop = function () {
-    console.log("Ajastin pysäytetty");
+    console.log("Stop");
     clearInterval(timer.current);
   };
 
