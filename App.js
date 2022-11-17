@@ -94,8 +94,9 @@ export default function App() {
         <TextInput style={styles.textInput} defaultValue=":" />
         <TextInput
           keyboardType="numeric"
-          onChangeText={(text) => setMinutes(text)}
+          onChangeText={onChangeMinutes}
           onFocus={() => setMinutes("")}
+          ref={minutesRef}
           style={styles.textInput}
           value={minutes}
         />
