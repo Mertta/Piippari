@@ -73,6 +73,14 @@ export default function App() {
     }
   };
 
+  const onChangeSeconds = function (secondsInput) {
+    if (Number(secondsInput) <= 59) {
+      setSeconds(secondsInput);
+    } else {
+      return;
+    }
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.timerInput}>
@@ -94,8 +102,9 @@ export default function App() {
         <TextInput style={styles.textInput} defaultValue=":" />
         <TextInput
           keyboardType="numeric"
-          onChangeText={(text) => setSeconds(text)}
+          onChangeText={onChangeSeconds}
           onFocus={() => setSeconds("")}
+          ref={secondsRef}
           style={styles.textInput}
           value={seconds}
         />
