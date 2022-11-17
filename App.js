@@ -53,12 +53,20 @@ export default function App() {
     return hours * 3600000 + minutes * 60000 + seconds * 1000;
   };
 
+  const onChangeHours = function (hoursInput) {
+    if (Number(hoursInput) <= 23) {
+      setHours(hoursInput);
+    } else {
+      minutesRef.current.focus();
+      setMinutes(hoursInput[hoursInput.length - 1]);
+    }
+  };
   return (
     <View style={styles.container}>
       <View style={styles.timerInput}>
         <TextInput
           keyboardType="numeric"
-          onChangeText={(text) => setHours(text)}
+          onChangeText={onChangeHours}
           onFocus={() => setHours("")}
           style={styles.textInput}
           value={hours}
