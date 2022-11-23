@@ -37,66 +37,18 @@ export default function App() {
     }
   };
 
-  const onChangeMinutes = function (minutesInput) {
-    if (Number(minutesInput) <= 59) {
-      setMinutes(minutesInput);
-    } else {
-      secondsRef.current.focus();
-      setSeconds(minutesInput[minutesInput.length - 1]);
+  // If timer is running i. e. setInterval return value is NOT 0
+  if (timer !== 0) {
+    console.log("Timer on käynnissä");
+    return <RunningScreen onStop={onStop} />;
     }
-  };
-
-  const onChangeSeconds = function (secondsInput) {
-    if (Number(secondsInput) <= 59) {
-      setSeconds(secondsInput);
+  // If timer is not running i. e. setInterval return value is 0
+  else if (timer === 0) {
+    console.log("Timer ei ole käynnissä");
+    return <InputScreen onStart={onStart} />;
     } else {
-      return;
+    return console.log("Something went wrong");
     }
-  };
-
-  return (
-    <View style={styles.container}>
-      <View style={styles.timerInput}>
-        <TextInput
-          keyboardType="numeric"
-          onChangeText={onChangeHours}
-          onFocus={() => setHours("")}
-          style={styles.textInput}
-          value={hours}
-        />
-        <TextInput style={styles.textInput} defaultValue=":" />
-        <TextInput
-          keyboardType="numeric"
-          onChangeText={onChangeMinutes}
-          onFocus={() => setMinutes("")}
-          ref={minutesRef}
-          style={styles.textInput}
-          value={minutes}
-        />
-        <TextInput style={styles.textInput} defaultValue=":" />
-        <TextInput
-          keyboardType="numeric"
-          onChangeText={onChangeSeconds}
-          onFocus={() => setSeconds("")}
-          ref={secondsRef}
-          style={styles.textInput}
-          value={seconds}
-        />
-      </View>
-      <Pressable
-        style={[styles.pressable, styles.pressableGreen]}
-        onPress={onButtonPressStart}
-      >
-        <Text style={styles.text}>Start</Text>
-      </Pressable>
-      <Pressable
-        style={[styles.pressable, styles.pressableRed]}
-        onPress={onButtonPressStop}
-      >
-        <Text style={styles.text}>Stop</Text>
-      </Pressable>
-    </View>
-  );
 }
 
 const styles = StyleSheet.create({
