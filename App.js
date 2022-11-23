@@ -1,13 +1,6 @@
 import { Audio } from "expo-av";
 import React from "react";
-import {
-  Button,
-  Pressable,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-} from "react-native";
+import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 
 export default function App() {
   const [hours, setHours] = React.useState("00");
