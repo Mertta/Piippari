@@ -10,8 +10,14 @@ export default function App() {
   const [seconds, setSeconds] = React.useState("05");
   const timer = React.useRef();
   const [sound, setSound] = React.useState();
-  const minutesRef = React.useRef();
-  const secondsRef = React.useRef();
+  const [timer, setTimer] = React.useState(0);
+
+  function onStart(delay) {
+    // Create const for setInterval return value
+    const timerReference = setInterval(playSound, delay);
+    // Set the const above as the state of the timer
+    setTimer(timerReference);
+  }
 
   async function playSound() {
     console.log("Loading Sound");
