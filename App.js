@@ -30,30 +30,10 @@ export default function App() {
       : undefined;
   }, [sound]);
 
-  const onButtonPressStart = function () {
-    console.log("Start");
-    const delay = toMilliseconds(hours, minutes, seconds);
-    timer.current = setInterval(playSound, delay);
-    // Aseta intervalli: 1 s välein kellon näkymä vähenee ja käyttäjän asettaman ajan välein playSound-funktiota kutsutaan.
-    // Näkymä muuttuu sekuntin välein
-    // Numeronäppäimistö katoaa näytöltä
-  };
-
-  const onButtonPressStop = function () {
-    console.log("Stop");
-    clearInterval(timer.current);
-  };
-
-  const toMilliseconds = function (hours, minutes, seconds) {
-    return hours * 3600000 + minutes * 60000 + seconds * 1000;
-  };
-
-  const onChangeHours = function (hoursInput) {
-    if (Number(hoursInput) <= 23) {
-      setHours(hoursInput);
-    } else {
-      minutesRef.current.focus();
-      setMinutes(hoursInput[hoursInput.length - 1]);
+  function onStop() {
+    console.log("Timer pysäytetty");
+    clearInterval(timer);
+    setTimer(0);
     }
   };
 
