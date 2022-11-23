@@ -1,6 +1,8 @@
 import { Audio } from "expo-av";
 import React from "react";
 import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
+import InputScreen from "./src/InputScreen";
+import RunningScreen from "./src/RunningScreen";
 
 export default function App() {
   const [hours, setHours] = React.useState("00");
