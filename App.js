@@ -7,12 +7,29 @@ import RunningScreen from "./src/RunningScreen";
 export default function App() {
   const [sound, setSound] = React.useState();
   const [timer, setTimer] = React.useState(0);
+  const [timeLeft, setTimeLeft] = React.useState(0);
+  // useState ottaa vastaan joko uuden arvon tai funktion. Jos useState huomaa, että kyseessä on funktio, se antaa nykyisen arvon funktiolle argumentiksi. Funktiota käytetään uuden arvon asettamiseen.
 
   function onStart(delay) {
+    // Set delay as timeLeft
+    setTimeLeft(delay);
     // Create const for setInterval return value
-    const timerReference = setInterval(playSound, delay);
+    const timerReference = setInterval(() => onTick(delay), 1000); // setIntervalille pitää antaa funktio ja numero
+    // setInterval(onTick(delay), 1000) --> Tämä ei riitä, koska nyt setInterval saa onTick-funktion paluuarvon (numero) ja numeron
+    // setInterval(onTick, 1000) --> Tämä riittäisi - setIntervalille, mutta myöhemmin tulisi ongelmia
     // Set the const above as the state of the timer
     setTimer(timerReference);
+  }
+
+  // Reduce timeLeft on every second
+  function onTick(delay) {
+    setTimeLeft((timeLeftCurrently) => {
+      if (timeLeftCurrently === 1) {
+        playSound();
+        return delay;
+      }
+      return timeLeftCurrently - 1;
+    });
   }
 
   async function playSound() {
@@ -40,14 +57,12 @@ export default function App() {
 
   // If timer is running i. e. setInterval return value is NOT 0
   if (timer !== 0) {
-    console.log("Timer on käynnissä");
-    return <RunningScreen onStop={onStop} />;
+    return <RunningScreen timeLeft={timeLeft} onStop={onStop} />;
   }
   // If timer is not running i. e. setInterval return value is 0
   else if (timer === 0) {
-    console.log("Timer ei ole käynnissä");
     return <InputScreen onStart={onStart} />;
   } else {
-    return console.log("Something went wrong");
+    return;
   }
 }

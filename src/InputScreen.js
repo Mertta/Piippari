@@ -9,41 +9,44 @@ export default function InputScreen({ onStart }) {
   const minutesRef = React.useRef();
   const secondsRef = React.useRef();
 
-  const onButtonPressStart = function () {
-    console.log("Start");
-    const delay = toMilliseconds(hours, minutes, seconds);
+  function onButtonPressStart() {
+    console.log("onButtonPressStart"); // Poista
+    // Create const delay and call for toSeconds function
+    const delay = toSeconds(hours, minutes, seconds);
+    // Call onStart function in App.js
     onStart(delay);
-  };
+  }
 
-  const toMilliseconds = function (hours, minutes, seconds) {
-    return hours * 3600000 + minutes * 60000 + seconds * 1000;
-  };
+  // Convert to seconds
+  function toSeconds(hours, minutes, seconds) {
+    return hours * 3600 + minutes * 60 + seconds;
+  }
 
-  const onChangeHours = function (hoursInput) {
+  function onChangeHours(hoursInput) {
     if (Number(hoursInput) <= 23) {
       setHours(hoursInput);
     } else {
       minutesRef.current.focus();
       setMinutes(hoursInput[hoursInput.length - 1]);
     }
-  };
+  }
 
-  const onChangeMinutes = function (minutesInput) {
+  function onChangeMinutes(minutesInput) {
     if (Number(minutesInput) <= 59) {
       setMinutes(minutesInput);
     } else {
       secondsRef.current.focus();
       setSeconds(minutesInput[minutesInput.length - 1]);
     }
-  };
+  }
 
-  const onChangeSeconds = function (secondsInput) {
+  function onChangeSeconds(secondsInput) {
     if (Number(secondsInput) <= 59) {
       setSeconds(secondsInput);
     } else {
       return;
     }
-  };
+  }
 
   return (
     <View style={styles.container}>
@@ -55,7 +58,8 @@ export default function InputScreen({ onStart }) {
           style={styles.textInput}
           value={hours}
         />
-        <TextInput style={styles.textInput} defaultValue=":" />
+        <Text style={styles.textInput}>:</Text>
+        {/* Change to Text*/}
         <TextInput
           keyboardType="numeric"
           onChangeText={onChangeMinutes}
@@ -64,7 +68,7 @@ export default function InputScreen({ onStart }) {
           style={styles.textInput}
           value={minutes}
         />
-        <TextInput style={styles.textInput} defaultValue=":" />
+        <Text style={styles.textInput}>:</Text>
         <TextInput
           keyboardType="numeric"
           onChangeText={onChangeSeconds}
